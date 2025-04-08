@@ -1,7 +1,7 @@
 U = 10;
-length = 18*U; // Length of the parallelepiped in cm
-width = 12*U;   // Width of the parallelepiped in cm
-height = 4*U;  // Height of the parallelepiped in cm
+length = 15*U; // Length of the parallelepiped in cm
+width = 7*U;   // Width of the parallelepiped in cm
+height = 2*U;  // Height of the parallelepiped in cm
 // Hole dimensions
 hole_diameter = 1.35*U;   // Hole diameter in cm
 hole_radius = hole_diameter / 2;
@@ -9,7 +9,7 @@ hole_distance = 3.7948*U;  // Distance between hole centers in cm
 antenna_thickness = 0.75*U;
 // support
 radius_s = 1*U;
-len_s = 2*U;
+len_s = 1*U;
 width_s = 3*U;
 height_s = 10*U;
 space = 0.1*U;
@@ -62,10 +62,10 @@ difference() {
    }
 
    // spaces for support
-    translate([+length/2, -width/8, 0]){
+    translate([+length/2, -width/20, 0]){
         cylinder(height,radius_s,radius_s,$fn=3, center=true); // height, r1, r2
     }
-    translate([-length/2, -width/8, 0]){
+    translate([-length/2, -width/20, 0]){
         rotate([0, -180, 0]){
             cylinder(height,radius_s,radius_s,$fn=3, center=true); // height, r1, r2
         }
@@ -78,19 +78,19 @@ translate([0, -width/2, space/2]){
         union(){ // support R
 
             cylinder(height_s,radius_s-space,radius_s-space,$fn=3, center=true); // height, r1, r2
-            translate([radius_s+space/2, 0, 0]){
+            translate([(len_s/2+space), 0, 0]){
                 cube([len_s, width_s, height_s],center = true);
                 }
         }
     }
 }
 
-translate([0, -width/2-width_s*1.5, space/2]){
+translate([0, -width/2-width_s*1.2, space/2]){
     rotate([0, 90, 0]){
         union(){ // support L
 
             cylinder(height_s,radius_s-space,radius_s-space,$fn=3, center=true); // height, r1, r2
-            translate([radius_s+space/2, 0, 0]){
+            translate([(len_s/2+space), 0, 0]){
                 cube([len_s, width_s, height_s],center = true);
                 }
         }
